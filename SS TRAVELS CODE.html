@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS Travels Naidu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#123A3F;
+    --navy-dark:#0C2A2E;
+    --gold:#C9962B;
+    --gold-dark:#A97C1F;
+    --parchment:#F6F1E4;
+    --paper:#FBF8F0;
+    --ink:#1B2422;
+    --ink-soft:#4C5A57;
+    --line:#D8CFB6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    line-height:1.15;
+    font-weight:600;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{
+    background:var(--navy);
+    color:var(--parchment);
+    padding:22px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .brand{font-family:'Fraunces', serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:0.3px;}
+  nav a{margin-left:22px;text-decoration:none;color:var(--parchment);font-size:0.95rem;}
+  nav a:hover{color:var(--gold);}
+
+  /* Hero */
+  .hero{
+    background:var(--navy-dark);
+    color:var(--parchment);
+    padding:72px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2;max-width:640px;}
+  .hero .kicker{
+    color:var(--gold);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:2.6rem;
+    color:#fff;
+  }
+  .hero p{
+    margin-top:18px;
+    font-size:1.08rem;
+    color:#D6DEDA;
+    max-width:480px;
+  }
+  .hero .cta{
+    display:inline-block;
+    margin-top:28px;
+    background:var(--gold);
+    color:var(--navy-dark);
+    padding:13px 28px;
+    text-decoration:none;
+    font-weight:600;
+    border-radius:2px;
+  }
+  .hero .cta:hover{background:var(--gold-dark);}
+  .stamp{
+    position:absolute;
+    right:-40px;
+    top:40%;
+    transform:translateY(-50%) rotate(-8deg);
+    width:230px;
+    height:230px;
+    border:2px solid rgba(201,150,43,0.35);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1;
+  }
+  .stamp::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px dashed rgba(201,150,43,0.3);
+    border-radius:50%;
+  }
+  .stamp span{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:rgba(214,222,218,0.45);
+    font-size:0.85rem;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  /* Section basics */
+  section{padding:64px 0;}
+  .section-title{
+    font-size:1.9rem;
+    margin-bottom:10px;
+  }
+  .section-lead{
+    color:var(--ink-soft);
+    max-width:560px;
+    margin-bottom:36px;
+  }
+
+  /* Explore (scroll-driven images) */
+  .explore{background:var(--parchment);}
+  .explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .explore-visual{position:sticky;top:90px;height:420px;}
+  .visual-frame{
+    position:relative;
+    width:100%;
+    height:100%;
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--navy-dark);
+    box-shadow:0 18px 40px rgba(18,58,63,0.18);
+  }
+  .v-img{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 0.7s ease;
+  }
+  .v-img.active{opacity:1;}
+  .explore-item{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+    opacity:0.4;
+    transition:opacity 0.4s ease;
+  }
+  .explore-item:first-of-type{border-top:none;}
+  .explore-item.active{opacity:1;}
+  .explore-item h3{font-size:1.4rem;margin-bottom:8px;}
+  .explore-item .place{color:var(--gold-dark);font-size:0.85rem;font-weight:600;margin-bottom:8px;}
+  .explore-item p{color:var(--ink-soft);margin:0;}
+
+  /* About */
+  .about .wrap{display:flex;gap:48px;flex-wrap:wrap;}
+  .about .col{flex:1;min-width:240px;}
+  .about h2{font-size:1.7rem;margin-bottom:14px;}
+  .about p{color:var(--ink-soft);}
+
+  /* Contact */
+  .contact{background:var(--navy);color:var(--parchment);}
+  .contact .wrap{display:flex;gap:56px;flex-wrap:wrap;}
+  .contact .details{flex:1;min-width:240px;}
+  .contact .details h2{color:#fff;font-size:1.7rem;margin-bottom:18px;}
+  .contact .details p{margin:0 0 10px;color:#D6DEDA;}
+  .contact .details a{text-decoration:none;color:var(--gold);}
+  .contact .form-col{flex:1.2;min-width:280px;}
+  .contact form{display:flex;flex-direction:column;gap:14px;}
+  .contact label{font-size:0.85rem;color:#D6DEDA;margin-bottom:5px;display:block;}
+  .contact input, .contact textarea{
+    width:100%;
+    padding:11px 13px;
+    border:1px solid rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+    border-radius:2px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+  }
+  .contact input:focus, .contact textarea:focus{
+    outline:2px solid var(--gold);
+    outline-offset:1px;
+  }
+  .contact textarea{min-height:120px;resize:vertical;}
+  .contact button{
+    margin-top:6px;
+    background:var(--gold);
+    color:var(--navy-dark);
+    border:none;
+    padding:13px 24px;
+    font-weight:600;
+    font-size:0.95rem;
+    border-radius:2px;
+    cursor:pointer;
+    align-self:flex-start;
+  }
+  .contact button:hover{background:var(--gold-dark);}
+  .contact button:disabled{opacity:0.6;cursor:default;}
+  .form-note{font-size:0.88rem;margin-top:6px;min-height:1.2em;}
+  .form-note.ok{color:#8FD3A6;}
+  .form-note.err{color:#E28B8B;}
+
+  footer{
+    background:var(--navy-dark);
+    color:#93A5A0;
+    text-align:center;
+    padding:22px 0;
+    font-size:0.85rem;
+  }
+
+  /* Parallax wallpaper panels */
+  .parallax-panel{
+    position:relative;
+    height:65vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .parallax-layer{
+    position:absolute;
+    top:-20%;
+    left:0;
+    width:100%;
+    height:140%;
+    background-size:cover;
+    background-position:center;
+    will-change:transform;
+  }
+  .panel-1 .parallax-layer{background-image:linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);}
+  .panel-2 .parallax-layer{background-image:linear-gradient(160deg,#12333A,#2E6E63 50%,#E0B04F 130%);}
+  .panel-3 .parallax-layer{background-image:linear-gradient(160deg,#0F2528,#3A4A52 55%,#9BAFA9 130%);}
+  .parallax-panel::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(10,30,32,0.32);
+    z-index:1;
+  }
+  .parallax-caption{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    text-align:center;
+    padding:0 20px;
+  }
+  .parallax-caption .kicker{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:1rem;
+    margin-bottom:8px;
+  }
+  .parallax-caption h3{
+    font-size:2rem;
+    color:#fff;
+    text-shadow:0 4px 20px rgba(0,0,0,0.35);
+  }
+
+  @media (max-width:720px){
+    .explore-grid{grid-template-columns:1fr;}
+    .explore-visual{position:static;height:240px;margin-bottom:8px;}
+    .hero h1{font-size:2rem;}
+    .stamp{display:none;}
+    .parallax-panel{height:48vh;}
+    .parallax-caption h3{font-size:1.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">SS TRAVELS NAIDU</div>
+    <nav>
+      <a href="#packages">Packages</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">A family-run travel business</div>
+    <h1>where your Journey begins</h1>
+    <p>We put together holidays, tours, and getaways for families and groups — handled personally from the first question to the last day of your trip.</p>
+    <a href="#contact" class="cta">Get in touch</a>
+  </div>
+  <div class="stamp"><span>EST.<br>ON THE ROAD</span></div>
+</div>
+
+<div class="parallax-panel panel-1">
+  <div class="parallax-layer"></div>
+  <div class="parallax-caption">
+    <div class="kicker">Tirupathi</div>
+    <h3>estled atop the sacred Seven Hills of Andhra Pradesh, Tirumala Tirupati is a breathtaking realm of profound spirituality and architectural grandeur. As the home of the world-famous Venkateswara Temple—often revered as the "Kaliyuga Vaikuntha"—this ancient sanctuary draws millions of pilgrims seeking blessings from Lord Balaji. Beyond its spiritual gravity, Tirumala captivates travelers with its mist-covered peaks, lush forest trails, and vibrant cultural energy, making it an essential journey into the beating heart of India's living heritage.</h3>
+  </div>
+</div>
+
+<div class="parallax-panel panel-1">
+  <div class="parallax-layer"></div>
+  <div class="parallax-caption">
+    <div class="kicker">Kerala</div>
+    <h3>Backwaters at their own pace</h3>
+  </div>
+</div>
+
+<div class="parallax-panel panel-2">
+  <div class="parallax-layer"></div>
+  <div class="parallax-caption">
+    <div class="kicker">Ooty</div>
+    <h3>Queen of Hill Stations</h3>
+  </div>
+</div>
+
+<div class="parallax-panel panel-3">
+  <div class="parallax-layer"></div>
+  <div class="parallax-caption">
+    <div class="kicker">Munnar</div>
+    <h3>Kashmir of South India</h3>
+  </div>
+</div>
+
+<section class="explore" id="packages">
+  <div class="wrap">
+    <h2 class="section-title">Popular packages</h2>
+    <p class="section-lead">A few of the trips we arrange most often — scroll to explore. Every package can be customised.</p>
+    <div class="explore-grid">
+
+      <div class="explore-visual">
+        <div class="visual-frame">
+          <svg class="v-img active" data-key="Tirupathi" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0C2A2E"/>
+            <circle cx="330" cy="60" r="30" fill="#C9962B" opacity="0.5"/>
+            <path d="M0 200 Q100 180 200 200 T400 200" stroke="#C9962B" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M0 220 Q100 200 200 220 T400 220" stroke="#C9962B" stroke-width="2" fill="none" opacity="0.35"/>
+            <path d="M90 210 h140 l-18 -30 h-104 z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <rect x="150" y="150" width="20" height="30" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <line x1="160" y1="150" x2="160" y2="130" stroke="#F6F1E4" stroke-width="3"/>
+          </svg>
+          <svg class="v-img" data-key="kerala" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0C2A2E"/>
+            <circle cx="200" cy="130" r="45" fill="#C9962B" opacity="0.55"/>
+            <path d="M0 230 h400" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
+            <path d="M110 230 C 105 170 130 130 120 90" stroke="#F6F1E4" stroke-width="3" fill="none"/>
+            <path d="M120 100 C 90 90 70 100 60 120" stroke="#F6F1E4" stroke-width="3" fill="none"/>
+            <path d="M120 100 C 150 85 175 95 185 115" stroke="#F6F1E4" stroke-width="3" fill="none"/>
+            <path d="M120 100 C 100 70 95 45 105 25" stroke="#F6F1E4" stroke-width="3" fill="none"/>
+          </svg>
+          <svg class="v-img" data-key="Tamil nadu" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0C2A2E"/>
+            <circle cx="320" cy="70" r="26" fill="#C9962B" opacity="0.5"/>
+            <path d="M20 230 L120 100 L170 160 L230 80 L340 230 Z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <path d="M100 130 l20 -30 l20 30" fill="none" stroke="#C9962B" stroke-width="2" opacity="0.7"/>
+            <path d="M210 110 l20 -30 l20 30" fill="none" stroke="#C9962B" stroke-width="2" opacity="0.7"/>
+          </svg>
+          <svg class="v-img" data-key="Karnataka" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0C2A2E"/>
+            <circle cx="80" cy="70" r="24" fill="#C9962B" opacity="0.5"/>
+            <rect x="70" y="150" width="26" height="90" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <rect x="110" y="120" width="30" height="120" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <path d="M155 240 V90 L175 70 L195 90 V240" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <rect x="215" y="160" width="24" height="80" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <rect x="255" y="140" width="28" height="100" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <line x1="40" y1="240" x2="360" y2="240" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
+          </svg>
+          <svg class="v-img" data-key="ooty" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0C2A2E"/>
+            <circle cx="310" cy="65" r="28" fill="#C9962B" opacity="0.5"/>
+            <path d="M0 235 h400" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
+            <path d="M150 235 V150 L200 100 L250 150 V235 Z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
+            <path d="M175 235 V180 h50 v55" fill="none" stroke="#F6F1E4" stroke-width="2" opacity="0.7"/>
+            <line x1="200" y1="100" x2="200" y2="75" stroke="#F6F1E4" stroke-width="3"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="explore-items">
+        <div class="explore-item active" data-key="kerala">
+          <div class="place">Tirupati, India</div>
+          <h3>Temple & Hills</h3>
+          <p>A short pilgrimage trip to Sri Venkateswara Temple, with time for the Tirumala hills, Akasa Ganga falls, and Sri Vari Museum. 2 nights, ideal for family darshan trip</p>
+        </div>
+        <div class="explore-item active" data-key="kerala">
+          <div class="place">Kerala, India</div>
+          <h3>Backwaters & Hills</h3>
+          <p>Houseboat stays, tea estate visits, and a slower pace. 5 nights, ideal for families.</p>
+        </div>
+        <div class="explore-item" data-key="Ooty">
+          <div class="place">Ooty</div>
+          <h3>Nilgiri Hill Retreat</h3>
+          <p>Botanical gardens, the toy train ride, and lake boating in the cool Nilgiri hills. 3 nights, a classic family hill-station trip..</p>
+        </div>
+        <div class="explore-item" data-key="Kodaikanal">
+          <div class="place">Kodaikanal</div>
+          <h3>Princess of Hill Stations</h3>
+          <p>Pine forests, Kodai Lake, and viewpoints like Coaker's Walk and Pillar Rocks. 3 nights, easy pace, great for couples and families alike.</p>
+        </div>
+        <div class="explore-item" data-key="Munnar">
+          <div class="place">Munnar, Kerala</div>
+          <h3>Tea Hills Getaway</h3>
+          <p>Misty tea estates, the Eravikulam National Park, and cool hill-station air. 3 nights, great for a quiet family break away from the coast.</p>
+        </div>
+        <div class="explore-item" data-key="custom">
+          <div class="place">Custom</div>
+          <h3>Plan it with us</h3>
+          <p>Tell us where you're dreaming of, and we'll build the itinerary around you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="col">
+      <h2>Why people book with us</h2>
+      <p>We're a small, family-run agency — every itinerary is put together by someone who has spoken to you directly, not a call centre. We keep groups small, stay reachable during your trip, and are upfront about costs from the first quote.</p>
+    </div>
+    <div class="col">
+      <h2>How it works</h2>
+      <p>Send us a message with where you'd like to go and roughly when — or just call or email us directly if that's easier. We'll reply with a suggested itinerary and price within a day, and refine it with you until it's right.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="details">
+      <h2>Plan your trip</h2>
+      <p>Phone: <a href="tel:+917093340050">+91 7093340050</a></p>
+      <p>Email: <a href="mailto:sstravelsnaidu07@gmail.com">sstravelsnaidu07@gmail.com</a></p>
+      <p>Based in Chennai, Tirupati — serving clients across India.</p>
+      <p style="margin-top:14px;"><strong style="color:var(--gold);">IRCTC Authorised Agent</strong> — for train ticket bookings.</p>
+      <p style="margin-top:24px;">Or just fill in the form and we'll email you back.</p>
+    </div>
+    <div class="form-col">
+      <form id="contactForm">
+        <div>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell us where you'd like to go and when..."></textarea>
+        </div>
+        <button type="submit" id="submitBtn">Send message</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> SS TRAVELS NAIDU. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Swap the sticky image as each destination scrolls through the middle of the screen.
+  const items = document.querySelectorAll('.explore-item');
+  const visuals = document.querySelectorAll('.v-img');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const key = entry.target.getAttribute('data-key');
+
+        items.forEach(i => i.classList.remove('active'));
+        entry.target.classList.add('active');
+
+        const match = document.querySelector('.v-img[data-key="' + key + '"]');
+        if (match) {
+          visuals.forEach(v => v.classList.remove('active'));
+          match.classList.add('active');
+        }
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+  items.forEach(item => observer.observe(item));
+
+  // Move the 3 wallpaper panels at a different speed than the page scroll (parallax).
+  const parallaxLayers = document.querySelectorAll('.parallax-layer');
+
+  function updateParallax(){
+    parallaxLayers.forEach(layer => {
+      const rect = layer.parentElement.getBoundingClientRect();
+      const offset = rect.top * 0.35;
+      layer.style.transform = 'translateY(' + offset + 'px)';
+    });
+  }
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+
+  const form = document.getElementById('contactForm');
+  const btn = document.getElementById('submitBtn');
+  const note = document.getElementById('formNote');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    note.textContent = '';
+    note.className = 'form-note';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+
+    try {
+      // Replace YOUR_FORM_ID below with the ID Formspree gives you (see setup notes).
+      const response = await fetch('https://formspree.io/f/mwlpvknk', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+
+      if (response.ok) {
+        note.textContent = "Thanks — your message has been sent. We'll reply by email shortly.";
+        note.className = 'form-note ok';
+        form.reset();
+      } else {
+        note.textContent = "Something went wrong sending your message. Please try again or email us directly.";
+        note.className = 'form-note err';
+      }
+    } catch (err) {
+      note.textContent = "Couldn't send right now — please check your connection or email us directly.";
+      note.className = 'form-note err';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    }
+  });
+</script>
+
+</body>
+</html>
