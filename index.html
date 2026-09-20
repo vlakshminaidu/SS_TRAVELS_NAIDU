@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SS Travels Naidu</title>
+<title>SS Travels Naidu | Tirupati Travel Agency — 22+ Years Experience</title>
+<meta name="description" content="SS Travels Naidu is a family-run travel agency based in Tirupati with over 22 years of experience — Tirupati darshan trips, accommodation, transport, plus tours across Kerala, Tamil Nadu & beyond. IRCTC authorised agent.">
 <meta property="og:site_name" content="SS Travels Naidu">
-<meta property="og:title" content="SS Travels Naidu">
+<meta property="og:title" content="SS Travels Naidu | Tirupati Travel Agency">
+<meta property="og:description" content="Based in Tirupati with 22+ years of experience — darshan booking guidance, accommodation, transport, and holiday packages across South India.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,6 +170,39 @@
   .about .col{flex:1;min-width:240px;}
   .about h2{font-size:1.7rem;margin-bottom:14px;}
   .about p{color:var(--ink-soft);}
+
+  /* Tirupati dedicated section */
+  .tirupati{background:var(--navy-dark);color:var(--parchment);}
+  .tirupati .badge{
+    display:inline-block;
+    background:rgba(201,150,43,0.15);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-size:0.85rem;
+    font-weight:600;
+    padding:5px 14px;
+    border-radius:20px;
+    margin-bottom:16px;
+  }
+  .tirupati h2{color:#fff;font-size:2rem;max-width:600px;}
+  .tirupati .intro{color:#D6DEDA;max-width:640px;margin-top:14px;font-size:1.02rem;}
+  .tirupati-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+    margin-top:40px;
+  }
+  .tirupati-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:6px;
+    padding:24px;
+  }
+  .tirupati-card h3{color:var(--gold);font-size:1.1rem;margin-bottom:10px;}
+  .tirupati-card p{color:#D6DEDA;margin:0;font-size:0.95rem;}
+  @media (max-width:720px){
+    .tirupati-grid{grid-template-columns:1fr;}
+  }
 
   /* Contact */
   .contact{background:var(--navy);color:var(--parchment);}
@@ -425,11 +460,38 @@
   </div>
 </section>
 
+<section class="tirupati" id="tirupati">
+  <div class="wrap">
+    <span class="badge">Tirupati Yatra Specialists · 22+ Years</span>
+    <h2>We're not just another agency listing Tirupati as a package — this is home ground.</h2>
+    <p class="intro">SS Travels Naidu is based in Tirupati itself, with over 22 years of experience helping families and pilgrims plan their darshan trips end-to-end. We handle the parts that usually cause the most stress — darshan booking guidance, where to stay, and how to get around — so your visit stays focused on the pilgrimage, not the logistics.</p>
+
+    <div class="tirupati-grid">
+      <div class="tirupati-card">
+        <h3>Darshan Booking Guidance</h3>
+        <p>We help you understand and plan around TTD's official darshan options — Special Entry, Sarva Darshan, and seva bookings — and guide you on timing your visit to match availability.</p>
+      </div>
+      <div class="tirupati-card">
+        <h3>Accommodation Near Tirumala</h3>
+        <p>From TTD guest houses to private lodges, we help you find and book stays that match your budget and how close you want to be to the temple.</p>
+      </div>
+      <div class="tirupati-card">
+        <h3>Local Transport</h3>
+        <p>Cabs, buses, and hill-route transport arranged for you — including onward travel to nearby spots like Kanipakam or Srikalahasti if you'd like to extend your trip.</p>
+      </div>
+      <div class="tirupati-card">
+        <h3>Train, Flight & Bus Booking</h3>
+        <p>We're an IRCTC Authorised Agent for train tickets, and also handle flight and bus bookings for your trip — one team managing all your travel, however you're arriving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div class="wrap">
     <div class="col">
       <h2>Why people book with us</h2>
-      <p>We're a small, family-run agency — every itinerary is put together by someone who has spoken to you directly, not a call centre. We keep groups small, stay reachable during your trip, and are upfront about costs from the first quote.</p>
+      <p>We're a family-run agency based in Tirupati with over 22 years of experience — every itinerary is put together by someone who has spoken to you directly, not a call centre. We keep groups small, stay reachable during your trip, and are upfront about costs from the first quote.</p>
     </div>
     <div class="col">
       <h2>How it works</h2>
@@ -445,7 +507,7 @@
       <p>Phone: <a href="tel:+917093340050">+91 7093340050</a></p>
       <p>Email: <a href="mailto:sstravelsnaidu07@gmail.com">sstravelsnaidu07@gmail.com</a></p>
       <p>Based in Chennai, Tirupati — serving clients across India.</p>
-      <p style="margin-top:14px;"><strong style="color:var(--gold);">IRCTC Authorised Agent</strong> — for train ticket bookings.</p>
+      <p style="margin-top:14px;"><strong style="color:var(--gold);">IRCTC Authorised Agent</strong> for train tickets — we also book flights and buses for your trip.</p>
       <p style="margin-top:24px;">Or just fill in the form and we'll email you back.</p>
     </div>
     <div class="form-col">
