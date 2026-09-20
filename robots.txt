@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ss-travels-naidu.web.app/sitemap.xml
