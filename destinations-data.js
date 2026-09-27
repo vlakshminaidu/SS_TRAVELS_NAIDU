@@ -21,6 +21,19 @@
 var SS_WHATSAPP = "917093340050";   // country code + number, no "+" or spaces
 
 var SS_DESTINATIONS = [
+  /* ---------------- Andhra Pradesh ---------------- */
+  { id: "tirupathi", name: "Tirumala Tirupathi", state: "Andhra Pradesh",
+    tag: "Temple & Hills", nights: "2 nights",
+    blurb: "Darshan at Sri Venkateswara Temple on the Seven Hills — our home ground, with 22+ years of planning darshan, stay and transport for families.",
+    photo: "A_View_of_Tirumala_Venkateswara_Temple.JPG",
+    spots: [
+      { name: "Sri Venkateswara Temple, Tirumala", about: "The main darshan. We guide you on TTD's Special Entry, Sarva Darshan and seva options." },
+      { name: "Akasa Ganga", about: "Sacred waterfall on the Tirumala hills." },
+      { name: "Sri Vari Museum", about: "Museum on the history and traditions of the Tirumala temple." },
+      { name: "Kanipakam", about: "Varasiddhi Vinayaka Temple, an easy add-on from Tirupati." },
+      { name: "Srikalahasti", about: "Ancient Shiva temple, often paired with a Tirupati visit." }
+    ] },
+
   /* ---------------- Kerala ---------------- */
   { id: "alleppey", name: "Alleppey Backwaters", state: "Kerala",
     tag: "Backwaters at their own pace", nights: "5 nights",
@@ -45,6 +58,18 @@ var SS_DESTINATIONS = [
     tag: "Princess of Hill Stations", nights: "3 nights",
     blurb: "Pine forests, Kodai Lake, Coaker's Walk and Pillar Rocks at an easy pace.",
     photo: "Kodaikanal_Lake_(Princess_of_Hill_stations),_Tamil_Nadu,_India.jpg",
+    spots: [] },
+
+  { id: "tiruvannamalai", name: "Tiruvannamalai", state: "Tamil Nadu",
+    tag: "Arunachala, the sacred hill", nights: "",
+    blurb: "The vast Arunachaleswarar Temple at the foot of Arunachala hill, the Girivalam walk around it, and Sri Ramana Ashram.",
+    photo: "Arunachalam_temple_from_a_nearby_hill.jpg",
+    spots: [] },
+
+  { id: "kanyakumari", name: "Kanyakumari", state: "Tamil Nadu",
+    tag: "Where three seas meet", nights: "",
+    blurb: "Sunrise and sunset at India's southern tip, the Vivekananda Rock Memorial, the Thiruvalluvar Statue and the Kumari Amman Temple.",
+    photo: "Vivekananda-and-Thiruvalluvar-Rock-Memorials-at-Kanyakumari.jpg",
     spots: [] },
 
   /* ---------------- Karnataka ---------------- */
