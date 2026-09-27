@@ -165,6 +165,19 @@
   .explore-item .place{color:var(--gold-dark);font-size:0.85rem;font-weight:600;margin-bottom:8px;}
   .explore-item p{color:var(--ink-soft);margin:0;}
 
+  /* Popular packages: real photos in the sticky frame */
+  .visual-frame figure.v-img{margin:0;background:linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);}
+  .visual-frame .v-img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);transition:transform 6s ease-out;}
+  .visual-frame .v-img.active img{transform:scale(1);}
+  .visual-frame .v-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(12,42,46,0.75), rgba(12,42,46,0) 45%);}
+  .visual-frame figcaption{
+    position:absolute;left:18px;bottom:14px;z-index:1;color:var(--parchment);
+    font-family:'Fraunces', serif;font-style:italic;font-size:1.05rem;
+  }
+  .visual-frame .v-custom{background:linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);display:flex;align-items:center;justify-content:center;}
+  .v-custom-text{position:relative;z-index:1;color:#fff;font-family:'Fraunces', serif;font-size:2.4rem;line-height:1.1;text-align:center;}
+  .v-custom-text span{display:block;color:var(--gold);font-style:italic;font-size:1.3rem;margin-bottom:6px;}
+
   /* About */
   .about .wrap{display:flex;gap:48px;flex-wrap:wrap;}
   .about .col{flex:1;min-width:240px;}
@@ -493,6 +506,48 @@
   .map-frame{border:1px solid var(--line);border-radius:4px;overflow:hidden;min-height:340px;background:var(--navy-dark);}
   .map-frame iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
 
+  /* ============ Reviews (moving) ============ */
+  .reviews{background:var(--navy-dark);color:var(--parchment);overflow:hidden;}
+  .reviews .section-title{color:#fff;}
+  .reviews .section-lead{color:#D6DEDA;}
+  .reviews .kicker-line{color:var(--gold);}
+  .rev-summary{display:flex;align-items:center;gap:14px;margin:-10px 0 30px;flex-wrap:wrap;}
+  .rev-summary .big{font-family:'Fraunces', serif;font-size:2.2rem;color:#fff;line-height:1;}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem;}
+  .rev-viewport{
+    position:relative;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .rev-track{display:flex;gap:22px;width:max-content;animation:rev-scroll var(--rev-dur, 40s) linear infinite;padding:6px 0 12px;}
+  .rev-viewport:hover .rev-track,.rev-viewport:focus-within .rev-track{animation-play-state:paused;}
+  @keyframes rev-scroll{to{transform:translateX(-50%);}}
+  .rev-card{
+    width:340px;flex:0 0 340px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,150,43,0.3);
+    border-radius:4px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:12px;
+  }
+  .rev-card blockquote{margin:0;color:#E6ECE9;font-size:0.97rem;line-height:1.55;
+    display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;}
+  .rev-who{margin-top:auto;display:flex;align-items:center;gap:12px;}
+  .rev-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy-dark);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces', serif;font-weight:700;}
+  .rev-who strong{display:block;color:#fff;font-family:'Fraunces', serif;font-weight:600;}
+  .rev-who span{font-size:0.82rem;color:#93A5A0;}
+  .rev-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+  .rev-actions a{padding:11px 20px;border-radius:2px;font-weight:600;text-decoration:none;}
+  .rev-actions .gold{background:var(--gold);color:var(--navy-dark);}
+  .rev-actions .line{border:1px solid var(--gold);color:var(--gold);}
+  @media (max-width:560px){ .rev-card{width:280px;flex-basis:280px;} }
+  @media (prefers-reduced-motion:reduce){
+    .rev-track{animation:none;overflow-x:auto;width:auto;}
+  }
+
+  /* ============ Visitor counter (footer) ============ */
+  .visits{display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;color:#D6DEDA;font-size:0.9rem;}
+  .visits b{color:var(--gold);font-family:'Fraunces', serif;font-size:1.15rem;font-weight:700;letter-spacing:0.5px;}
+  .visits svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;}
+  .visits[hidden],.rev-actions[hidden],.reviews[hidden]{display:none;}
+
   @media (max-width:900px){
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .tips-grid,.find-grid{grid-template-columns:1fr;}
@@ -585,49 +640,30 @@
 
       <div class="explore-visual">
         <div class="visual-frame">
-          <svg class="v-img active" data-key="Tirupathi" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="300" fill="#0C2A2E"/>
-            <circle cx="330" cy="60" r="30" fill="#C9962B" opacity="0.5"/>
-            <path d="M0 200 Q100 180 200 200 T400 200" stroke="#C9962B" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M0 220 Q100 200 200 220 T400 220" stroke="#C9962B" stroke-width="2" fill="none" opacity="0.35"/>
-            <path d="M90 210 h140 l-18 -30 h-104 z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <rect x="150" y="150" width="20" height="30" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <line x1="160" y1="150" x2="160" y2="130" stroke="#F6F1E4" stroke-width="3"/>
-          </svg>
-          <svg class="v-img" data-key="kerala" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="300" fill="#0C2A2E"/>
-            <circle cx="200" cy="130" r="45" fill="#C9962B" opacity="0.55"/>
-            <path d="M0 230 h400" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
-            <path d="M110 230 C 105 170 130 130 120 90" stroke="#F6F1E4" stroke-width="3" fill="none"/>
-            <path d="M120 100 C 90 90 70 100 60 120" stroke="#F6F1E4" stroke-width="3" fill="none"/>
-            <path d="M120 100 C 150 85 175 95 185 115" stroke="#F6F1E4" stroke-width="3" fill="none"/>
-            <path d="M120 100 C 100 70 95 45 105 25" stroke="#F6F1E4" stroke-width="3" fill="none"/>
-          </svg>
-          <svg class="v-img" data-key="Tamil nadu" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="300" fill="#0C2A2E"/>
-            <circle cx="320" cy="70" r="26" fill="#C9962B" opacity="0.5"/>
-            <path d="M20 230 L120 100 L170 160 L230 80 L340 230 Z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <path d="M100 130 l20 -30 l20 30" fill="none" stroke="#C9962B" stroke-width="2" opacity="0.7"/>
-            <path d="M210 110 l20 -30 l20 30" fill="none" stroke="#C9962B" stroke-width="2" opacity="0.7"/>
-          </svg>
-          <svg class="v-img" data-key="Karnataka" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="300" fill="#0C2A2E"/>
-            <circle cx="80" cy="70" r="24" fill="#C9962B" opacity="0.5"/>
-            <rect x="70" y="150" width="26" height="90" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <rect x="110" y="120" width="30" height="120" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <path d="M155 240 V90 L175 70 L195 90 V240" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <rect x="215" y="160" width="24" height="80" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <rect x="255" y="140" width="28" height="100" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <line x1="40" y1="240" x2="360" y2="240" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
-          </svg>
-          <svg class="v-img" data-key="ooty" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="300" fill="#0C2A2E"/>
-            <circle cx="310" cy="65" r="28" fill="#C9962B" opacity="0.5"/>
-            <path d="M0 235 h400" stroke="#F6F1E4" stroke-width="2" opacity="0.3"/>
-            <path d="M150 235 V150 L200 100 L250 150 V235 Z" fill="none" stroke="#F6F1E4" stroke-width="3"/>
-            <path d="M175 235 V180 h50 v55" fill="none" stroke="#F6F1E4" stroke-width="2" opacity="0.7"/>
-            <line x1="200" y1="100" x2="200" y2="75" stroke="#F6F1E4" stroke-width="3"/>
-          </svg>
+          <figure class="v-img active" data-key="Tirupathi">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/A_View_of_Tirumala_Venkateswara_Temple.JPG?width=1100" alt="Tirumala, Tirupati" loading="eager" decoding="async" onerror="this.remove()">
+            <figcaption>Tirumala, Tirupati</figcaption>
+          </figure>
+          <figure class="v-img" data-key="kerala">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kerala_backwaters%2C_Vembanad_Lake%2C_Houseboats%2C_India.jpg?width=1100" alt="Kerala backwaters" loading="lazy" decoding="async" onerror="this.remove()">
+            <figcaption>Kerala backwaters</figcaption>
+          </figure>
+          <figure class="v-img" data-key="ooty">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ooty_Lake.jpg?width=1100" alt="Ooty Lake" loading="lazy" decoding="async" onerror="this.remove()">
+            <figcaption>Ooty Lake</figcaption>
+          </figure>
+          <figure class="v-img" data-key="Kodaikanal">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kodaikanal_Lake_%28Princess_of_Hill_stations%29%2C_Tamil_Nadu%2C_India.jpg?width=1100" alt="Kodaikanal Lake" loading="lazy" decoding="async" onerror="this.remove()">
+            <figcaption>Kodaikanal Lake</figcaption>
+          </figure>
+          <figure class="v-img" data-key="Munnar">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Munnar_Tea_Plantations-WUS07343-Pano.jpg?width=1100" alt="Munnar tea estates" loading="lazy" decoding="async" onerror="this.remove()">
+            <figcaption>Munnar tea estates</figcaption>
+          </figure>
+          <figure class="v-img v-custom" data-key="custom">
+            <div class="v-custom-text"><span>Your trip,</span>your way</div>
+            <figcaption>Custom itinerary</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -747,6 +783,24 @@
       <div class="step"><div class="dot">3</div><div><h3>Refine it together</h3><p>Change the dates, the hotels or the places until it's exactly right for your family or group.</p></div></div>
       <div class="step"><div class="dot">4</div><div><h3>We handle the bookings</h3><p>Darshan guidance, stays, cabs and train, flight or bus tickets, all arranged by one team.</p></div></div>
       <div class="step"><div class="dot">5</div><div><h3>Travel with us on call</h3><p>We stay reachable throughout your trip, so any change or question is sorted quickly.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" hidden>
+  <div class="wrap">
+    <div class="kicker-line">In our travellers' words</div>
+    <h2 class="section-title">What our customers say</h2>
+    <p class="section-lead">Real reviews from families and pilgrims who travelled with us.</p>
+    <div class="rev-summary"><span class="big" id="rev-avg"></span><div><div class="stars" id="rev-stars"></div><small id="rev-count" style="color:#93A5A0"></small></div></div>
+  </div>
+  <div class="rev-viewport" tabindex="0" aria-label="Customer reviews, scrolling. Hover or focus to pause.">
+    <div class="rev-track" id="rev-track"></div>
+  </div>
+  <div class="wrap">
+    <div class="rev-actions" id="rev-actions" hidden>
+      <a class="gold" id="rev-read" target="_blank" rel="noopener">Read all reviews on Google</a>
+      <a class="line" id="rev-write" target="_blank" rel="noopener">Write a review</a>
     </div>
   </div>
 </section>
@@ -965,7 +1019,11 @@
 </section>
 
 <footer>
-  &copy; <span id="year"></span> SS TRAVELS NAIDU. All rights reserved.
+  <div class="visits" id="visits" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+    Visitors so far: <b id="visit-count">0</b>
+  </div>
+  <div>&copy; <span id="year"></span> SS TRAVELS NAIDU. All rights reserved.</div>
 </footer>
 
 <script>
@@ -1285,5 +1343,43 @@
 })();
 </script>
 
+<script>
+/* ===== Customer reviews: moving cards (reviews live in destinations-data.js) ===== */
+(function () {
+  var list = window.SS_REVIEWS || [];
+  var sec = document.getElementById("reviews");
+  if (!sec || !list.length) return;              // stays hidden until real reviews are added
+  sec.hidden = false;
+  function esc(t) { return String(t || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function stars(n) { n = Math.max(0, Math.min(5, Math.round(n || 5))); return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  var sum = 0; list.forEach(function (r) { sum += (r.rating || 5); });
+  var avg = sum / list.length;
+  document.getElementById("rev-avg").textContent = avg.toFixed(1);
+  document.getElementById("rev-stars").textContent = stars(avg);
+  document.getElementById("rev-count").textContent = list.length + (list.length === 1 ? " review shown" : " reviews shown");
+  var cards = list.map(function (r) {
+    var initial = (r.name || "?").trim().charAt(0).toUpperCase();
+    var meta = [r.place, r.trip].filter(Boolean).map(esc).join(" · ");
+    return '<article class="rev-card"><div class="stars" aria-label="' + (r.rating || 5) + ' out of 5 stars">' + stars(r.rating) + "</div>" +
+           "<blockquote>" + esc(r.text) + "</blockquote>" +
+           '<div class="rev-who"><div class="rev-avatar" aria-hidden="true">' + esc(initial) + "</div><div><strong>" + esc(r.name) + "</strong>" +
+           (meta ? "<span>" + meta + "</span>" : "") + "</div></div></article>";
+  }).join("");
+  var track = document.getElementById("rev-track");
+  // repeat enough to fill wide screens, then duplicate once for a seamless loop
+  var reps = Math.max(1, Math.ceil(6 / list.length));
+  var one = ""; for (var i = 0; i < reps; i++) one += cards;
+  track.innerHTML = one + one.replace(/<article class="rev-card"/g, '<article class="rev-card" aria-hidden="true"');
+  track.style.setProperty("--rev-dur", Math.max(25, list.length * reps * 8) + "s");
+  var link = window.SS_GOOGLE_REVIEWS_LINK;
+  if (link) {
+    document.getElementById("rev-actions").hidden = false;
+    document.getElementById("rev-read").href = link;
+    document.getElementById("rev-write").href = link;
+  }
+})();
+</script>
+
+<script src="visitor-counter.js"></script>
 </body>
 </html>

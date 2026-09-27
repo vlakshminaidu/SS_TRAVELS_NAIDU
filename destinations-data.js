@@ -125,3 +125,19 @@ var SS = {
     return null;
   }
 };
+
+/* =====================================================================
+   CUSTOMER REVIEWS (shown as moving cards on the home page)
+   ---------------------------------------------------------------------
+   Copy your best reviews from your Google Business Profile and paste
+   them here exactly as the customer wrote them. The section stays
+   hidden until at least one review is added.
+
+     { name: "Customer's name as shown on Google", place: "Chennai",
+       rating: 5, trip: "Tirupati darshan trip", text: "The review text..." },
+   ===================================================================== */
+var SS_GOOGLE_REVIEWS_LINK = "";   // paste your Google reviews link here (Google Maps > your business > Share)
+
+var SS_REVIEWS = [
+  // add reviews here
+];
