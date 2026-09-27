@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destination | SS Travels Naidu</title>
+<meta name="description" content="Places to visit and trip planning with SS Travels Naidu, a family-run travel agency in Tirupati and Chennai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#123A3F;
+    --navy-dark:#0C2A2E;
+    --gold:#C9962B;
+    --gold-dark:#A97C1F;
+    --parchment:#F6F1E4;
+    --paper:#FBF8F0;
+    --ink:#1B2422;
+    --ink-soft:#4C5A57;
+    --line:#D8CFB6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Work Sans', sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;}
+  h1,h2,h3{font-family:'Fraunces', serif;margin:0;line-height:1.15;font-weight:600;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Header (same as home page) */
+  header{background:var(--navy);color:var(--parchment);padding:22px 0;}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .brand{font-family:'Fraunces', serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:0.3px;text-decoration:none;}
+  nav a{margin-left:22px;text-decoration:none;color:var(--parchment);font-size:0.95rem;}
+  nav a:hover{color:var(--gold);}
+
+  /* Hero with the destination photo */
+  .d-hero{
+    position:relative;min-height:62vh;display:flex;align-items:flex-end;
+    background:var(--navy-dark) linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);
+    color:var(--parchment);overflow:hidden;
+  }
+  .d-hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:d-zoom 14s ease-out forwards;}
+  @keyframes d-zoom{to{transform:scale(1);}}
+  .d-hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(12,42,46,0.95) 0%, rgba(12,42,46,0.55) 45%, rgba(12,42,46,0.15) 100%);
+  }
+  .d-hero .wrap{position:relative;z-index:2;padding-top:120px;padding-bottom:56px;width:100%;}
+  .back{display:inline-block;color:var(--parchment);text-decoration:none;font-size:0.9rem;opacity:0.85;margin-bottom:22px;}
+  .back:hover{color:var(--gold);opacity:1;}
+  .kicker{color:var(--gold);font-family:'Fraunces', serif;font-style:italic;font-size:1.05rem;margin-bottom:10px;}
+  .d-hero h1{font-size:3rem;color:#fff;max-width:760px;}
+  .d-tag{margin-top:12px;font-size:1.1rem;color:#D6DEDA;}
+  .d-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dark);padding:13px 28px;text-decoration:none;font-weight:600;border-radius:2px;}
+  .btn:hover{background:var(--gold-dark);}
+  .btn-outline{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:12px 24px;text-decoration:none;font-weight:600;border-radius:2px;}
+  .btn-outline:hover{background:rgba(201,150,43,0.12);}
+
+  /* Intro */
+  section{padding:64px 0;}
+  .intro{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start;}
+  .intro .text{flex:2;min-width:260px;}
+  .intro .text p{color:var(--ink-soft);font-size:1.08rem;margin:14px 0 0;}
+  .facts{flex:1;min-width:220px;border-left:2px solid var(--gold);padding-left:22px;}
+  .facts div{margin-bottom:14px;}
+  .facts small{display:block;color:var(--gold-dark);font-weight:600;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}
+  .facts span{font-family:'Fraunces', serif;font-size:1.15rem;}
+
+  /* Places to visit */
+  .spots-sec{background:var(--parchment);}
+  .section-title{font-size:1.9rem;margin-bottom:10px;}
+  .section-lead{color:var(--ink-soft);max-width:560px;margin:0 0 36px;}
+  .spots{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px;}
+  .spot{
+    background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    box-shadow:0 12px 30px -18px rgba(18,58,63,0.35);
+    opacity:0;transform:translateY(24px);transition:opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+  }
+  .spot.in{opacity:1;transform:none;}
+  .spot:hover{box-shadow:0 18px 40px -16px rgba(18,58,63,0.45);}
+  .spot .ph{position:relative;aspect-ratio:4/3;background:linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);}
+  .spot .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .spot .ph.nophoto{aspect-ratio:auto;height:64px;}
+  .spot .num{
+    position:absolute;left:14px;top:14px;width:34px;height:34px;border-radius:50%;
+    background:var(--navy-dark);color:var(--gold);display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces', serif;font-weight:700;font-size:0.95rem;border:1px solid rgba(201,150,43,0.6);
+  }
+  .spot .body{padding:18px 18px 20px;}
+  .spot h3{font-size:1.2rem;margin-bottom:6px;}
+  .spot p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
+  .empty{
+    border:1px dashed var(--line);border-radius:4px;padding:32px;text-align:center;color:var(--ink-soft);background:var(--paper);
+  }
+  .empty strong{display:block;font-family:'Fraunces', serif;font-size:1.25rem;color:var(--ink);margin-bottom:6px;}
+
+  /* More in this state */
+  .more{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
+  .more a{
+    position:relative;display:block;aspect-ratio:3/2;border-radius:4px;overflow:hidden;text-decoration:none;
+    background:linear-gradient(160deg,#0C2A2E,#1F5C63 55%,#C9962B 130%);
+  }
+  .more img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+  .more a:hover img{transform:scale(1.06);}
+  .more a::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(12,42,46,0.9), rgba(12,42,46,0) 60%);}
+  .more span{position:absolute;left:14px;bottom:12px;z-index:1;color:#fff;font-family:'Fraunces', serif;font-weight:600;font-size:1.1rem;}
+
+  /* Call to action */
+  .cta-band{background:var(--navy);color:var(--parchment);text-align:center;}
+  .cta-band h2{color:#fff;font-size:1.8rem;margin-bottom:10px;}
+  .cta-band p{color:#D6DEDA;margin:0 auto 24px;max-width:520px;}
+  .cta-band .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+  footer{background:var(--navy-dark);color:#93A5A0;text-align:center;padding:22px 0;font-size:0.85rem;}
+  footer a{color:#93A5A0;}
+  .credits{margin-top:6px;font-size:0.75rem;}
+
+  @media (max-width:720px){
+    .d-hero{min-height:54vh;}
+    .d-hero h1{font-size:2.1rem;}
+    nav a{margin-left:14px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .d-hero img.bg{animation:none;transform:none;}
+    .spot{opacity:1;transform:none;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">SS TRAVELS NAIDU</a>
+    <nav>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="index.html#packages">Packages</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="page">
+  <div class="d-hero">
+    <img class="bg" alt="">
+    <div class="wrap">
+      <a class="back" href="index.html#destinations">&larr; All destinations</a>
+      <div class="kicker" id="d-state"></div>
+      <h1 id="d-name">Loading…</h1>
+      <div class="d-tag" id="d-tag"></div>
+      <div class="d-actions">
+        <a class="btn" id="d-whatsapp" target="_blank" rel="noopener">Plan this trip on WhatsApp</a>
+        <a class="btn-outline" href="tel:+917093340050">Call +91 7093340050</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap intro">
+      <div class="text">
+        <h2 class="section-title" id="d-about-title">About</h2>
+        <p id="d-blurb"></p>
+      </div>
+      <div class="facts" id="d-facts"></div>
+    </div>
+  </section>
+
+  <section class="spots-sec">
+    <div class="wrap">
+      <h2 class="section-title" id="d-spots-title">Main places to visit</h2>
+      <p class="section-lead">The spots we usually include. Tell us what you'd like to see and we'll plan the route and timings around you.</p>
+      <div id="d-spots"></div>
+    </div>
+  </section>
+
+  <section id="d-more-sec" hidden>
+    <div class="wrap">
+      <h2 class="section-title" id="d-more-title">More in this state</h2>
+      <p class="section-lead">These pair well on the same trip.</p>
+      <div class="more" id="d-more"></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 id="d-cta-title">Plan your trip with us</h2>
+      <p>We handle stay, transport and darshan bookings. Reply within a day, and IRCTC authorised for train tickets.</p>
+      <div class="row">
+        <a class="btn" id="d-whatsapp-2" target="_blank" rel="noopener">WhatsApp us</a>
+        <a class="btn-outline" href="mailto:sstravelsnaidu07@gmail.com">Email us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> SS TRAVELS NAIDU. All rights reserved.
+  <div class="credits" id="d-credits"></div>
+</footer>
+
+<script src="destinations-data.js"></script>
+<script>
+(function () {
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  var id = new URLSearchParams(location.search).get("id");
+  var d = id && SS.find(id);
+  var $ = function (x) { return document.getElementById(x); };
+
+  if (!d) {
+    $("d-name").textContent = "Destination not found";
+    $("d-tag").innerHTML = 'Please go back to <a href="index.html#destinations" style="color:var(--gold)">all destinations</a>.';
+    document.querySelector(".d-actions").hidden = true;
+    document.querySelector(".d-hero img.bg").remove();
+    Array.prototype.forEach.call(document.querySelectorAll("#page > section"), function (s) { s.hidden = true; });
+    return;
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function onFail(img, box) { img.addEventListener("error", function () { img.remove(); if (box) box.classList.add("noimg"); }); }
+
+  // Page title and description
+  document.title = d.name + ", " + d.state + " | SS Travels Naidu";
+  var meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", d.name + " (" + d.state + "): " + d.blurb);
+
+  // Hero
+  var bg = document.querySelector(".d-hero img.bg");
+  bg.src = SS.photo(d.photo, 1600); onFail(bg);
+  $("d-state").textContent = d.state;
+  $("d-name").textContent = d.name;
+  $("d-tag").textContent = d.tag;
+  $("d-whatsapp").href = SS.whatsapp(d);
+  $("d-whatsapp-2").href = SS.whatsapp(d);
+
+  // About + quick facts
+  $("d-about-title").textContent = "About " + d.name;
+  $("d-blurb").textContent = d.blurb;
+  var facts = [["State", d.state], ["Known as", d.tag]];
+  if (d.nights) facts.push(["Suggested stay", d.nights]);
+  if (d.spots && d.spots.length) facts.push(["Places to visit", d.spots.length]);
+  $("d-facts").innerHTML = facts.map(function (f) { return "<div><small>" + esc(f[0]) + "</small><span>" + esc(f[1]) + "</span></div>"; }).join("");
+
+  // Places to visit
+  $("d-spots-title").textContent = "Main places to visit in " + d.name;
+  var box = $("d-spots");
+  if (d.spots && d.spots.length) {
+    box.className = "spots";
+    box.innerHTML = d.spots.map(function (s, i) {
+      var photo = s.photo ? '<img loading="lazy" decoding="async" alt="' + esc(s.name) + '" src="' + SS.photo(s.photo, 700) + '">' : "";
+      return '<article class="spot"><div class="ph' + (photo ? '' : ' nophoto') + '">' + photo + '<span class="num">' + (i + 1) + "</span></div>" +
+             '<div class="body"><h3>' + esc(s.name) + "</h3>" + (s.about ? "<p>" + esc(s.about) + "</p>" : "") + "</div></article>";
+    }).join("");
+    Array.prototype.forEach.call(box.querySelectorAll(".ph img"), function (img) { onFail(img); });
+    // Cards rise into view as you scroll
+    var spots = box.querySelectorAll(".spot");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -10% 0px" });
+      Array.prototype.forEach.call(spots, function (s, i) { s.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(s); });
+    } else {
+      Array.prototype.forEach.call(spots, function (s) { s.classList.add("in"); });
+    }
+  } else {
+    box.innerHTML = '<div class="empty"><strong>The full list of places is coming soon</strong>' +
+                    'Message us on WhatsApp and we\'ll share the complete itinerary for ' + esc(d.name) + ".</div>";
+  }
+
+  // More in the same state
+  var others = SS_DESTINATIONS.filter(function (o) { return o.state === d.state && o.id !== d.id; });
+  if (others.length) {
+    $("d-more-sec").hidden = false;
+    $("d-more-title").textContent = "More in " + d.state;
+    $("d-more").innerHTML = others.map(function (o) {
+      return '<a href="' + SS.page(o) + '"><img loading="lazy" alt="' + esc(o.name) + '" src="' + SS.photo(o.photo, 600) + '"><span>' + esc(o.name) + "</span></a>";
+    }).join("");
+    Array.prototype.forEach.call($("d-more").querySelectorAll("img"), function (img) { onFail(img); });
+  }
+
+  $("d-cta-title").textContent = "Plan your " + d.name + " trip with us";
+
+  // Photo credits (Wikimedia Commons licences ask for attribution)
+  var credited = [d.photo].concat((d.spots || []).map(function (s) { return s.photo; })).filter(Boolean);
+  $("d-credits").innerHTML = "Photos: " + credited.map(function (p, i) {
+    return '<a href="' + SS.credit(p) + '" target="_blank" rel="noopener">' + (i === 0 ? d.name : (d.spots.filter(function (s) { return s.photo === p; })[0] || {}).name || "photo") + "</a>";
+  }).join(" · ") + " via Wikimedia Commons";
+})();
+</script>
+
+</body>
+</html>
